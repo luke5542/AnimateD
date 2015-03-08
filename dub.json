@@ -1,9 +1,12 @@
 {
 	"name": "animated",
 	"description": "An animation library, written in D, based loosely upon the animation framework used in Android.",
-	"copyright": "Copyright © 2015, luke5542",
+	"homepage": "https://github.com/luke5542/AnimateD",
 	"authors": ["luke5542"],
 	"license": "GPL-2.0",
-	"dependencies": {
-	}
+
+	"targetType": "library",
+	"targetPath": "bin\\",
+
+	"dependencies": {}
 }
