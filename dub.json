@@ -1,5 +1,5 @@
 {
-	"name": "AnimateD",
+	"name": "animated",
 	"description": "An animation library, written in D, based loosely upon the animation framework used in Android.",
 	"copyright": "Copyright © 2015, luke5542",
 	"authors": ["luke5542"],
