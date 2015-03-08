@@ -1,8 +1,9 @@
 {
-	"name": "animated",
-	"description": "A minimal D application.",
-	"copyright": "Copyright © 2015, hodor",
-	"authors": ["hodor"],
+	"name": "AnimateD",
+	"description": "An animation library, written in D, based loosely upon the animation framework used in Android.",
+	"copyright": "Copyright © 2015, luke5542",
+	"authors": ["luke5542"],
+	"license": "GPL-2.0",
 	"dependencies": {
 	}
 }
