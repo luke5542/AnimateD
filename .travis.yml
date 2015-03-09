@@ -1,1 +1,4 @@
 language: d
+
+script: 
+        - cd tests/unittests/ && dub
