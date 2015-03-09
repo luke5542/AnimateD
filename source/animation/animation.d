@@ -206,6 +206,30 @@ class Animation : Animatable
     }
 }
 
+class ValueAnimation(T) : Animation
+if(isNumeric(T))
+{
+    private
+    {
+        T m_startVal;
+        T m_difference;
+        T* m_target;
+    }
+
+    this(Duration duration, T* target, T start, T end)
+    {
+        super(duration);
+        m_startVal = start;
+        m_difference = end - start;
+    }
+
+    override protected void updateProgress(double progress)
+    {
+        m_target* = m_startVal + (temp * progress);
+    }
+
+}
+
 class DelegateAnimation : Animation
 {
     private

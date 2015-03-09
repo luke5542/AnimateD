@@ -1,0 +1,11 @@
+{
+	"name": "unittests",
+	"description": "Unit tests for AnimateD.",
+	"authors": ["luke5542"],
+	"dependencies": {
+		"animated": ">=0.1.0",
+        "dunit": ">=1.0.10"
+	},
+	"targetPath": "unittests\\",
+    "workingDirectory":"unittests\\"
+}
