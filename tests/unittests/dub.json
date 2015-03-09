@@ -4,7 +4,7 @@
 	"authors": ["luke5542"],
 	"dependencies": {
 		"animated": "~master",
-        "dunit": ">=1.0.10"
+        "d-unit": ">=0.7.1"
 	},
 	"targetPath": "unittests\\",
     "workingDirectory":"unittests\\"

@@ -4,7 +4,7 @@ import core.time;
 
 import dunit;
 
-import animate;
+import animate.d;
 
 class RepeatTest
 {
@@ -18,7 +18,7 @@ class RepeatTest
 
 	this()
 	{
-		duration = 2.secs;
+		duration = secs(2);
 	}
 
     void updateFunction(double progress)
