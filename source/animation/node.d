@@ -1,8 +1,8 @@
-module animate.node;
+module animate.animate.node;
 
 import core.time;
 
-import animate.animation;
+import animate.animate.animation;
 
 interface Node
 {

@@ -2,6 +2,6 @@
 	"fileVersion": 1,
 	"versions": {
 		"dunit": "1.0.10",
-		"animated": "0.1.0"
+		"animated": "~master"
 	}
 }

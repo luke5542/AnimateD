@@ -1,4 +1,4 @@
-module animate.interpolator;
+module animate.animate.interpolator;
 
 import std.math;
 

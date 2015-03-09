@@ -1,9 +1,9 @@
-module animate.animation;
+module animate.animate.animation;
 
 import std.stdio;
 import core.time;
 
-import animate.interpolator;
+import animate.animate.interpolator;
 
 immutable int INFINITE = -1;
 
@@ -225,7 +225,7 @@ if(isNumeric(T))
 
     override protected void updateProgress(double progress)
     {
-        m_target* = m_startVal + (temp * progress);
+        *m_target = m_startVal + (temp * progress);
     }
 
 }
