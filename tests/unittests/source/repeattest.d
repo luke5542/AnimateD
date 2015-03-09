@@ -10,7 +10,7 @@ class RepeatTest
 {
 	mixin UnitTest;
 
-    immutable MAX_VAL = 180;
+    static immutable MAX_VAL = 180;
 	int m_val;
 	Duration m_dur;
 
@@ -18,21 +18,21 @@ class RepeatTest
 
 	this()
 	{
-		duration = secs(2);
+		m_dur = seconds(2);
 	}
 
     void updateFunction(double progress)
     {
         //Some simple function that uses the animation
         //progress to come up with some value...
-        m_val = MAX_VAL * progress;
+        m_val = cast(int) (MAX_VAL * progress);
     }
 
 	@Before
 	void setupAnimation()
 	{
 		m_val = 0;
-		m_anim = new DelegateAnimation(duration, &updateFunction);
+		m_anim = new DelegateAnimation(m_dur, &updateFunction);
 	}
 
 	@Test
@@ -41,23 +41,23 @@ class RepeatTest
 		m_anim.repeatMode = RepeatMode.REPEAT;
 		m_anim.repeatCount = 1;
 
-		m_anim.update(secs(1.0));
+		m_anim.update(seconds(1));
 		assertEquals(m_val, 90);
 		assertTrue(m_anim.isRunning());
 
-		m_anim.update(secs(.5));
+		m_anim.update(msecs(500));
 		assertEquals(m_val, 135);
 		assertTrue(m_anim.isRunning());
 
-		m_anim.update(secs(.5));
+		m_anim.update(msecs(500));
 		assertEquals(m_val, 0);
 		assertTrue(m_anim.isRunning());
 
-		m_anim.update(secs(1.0));
+		m_anim.update(seconds(1));
 		assertEquals(m_val, 90);
 		assertTrue(m_anim.isRunning());
 
-		m_anim.update(secs(1.0));
+		m_anim.update(seconds(1));
 		assertEquals(m_val, 180);
 		assertFalse(m_anim.isRunning());
 	}
@@ -68,23 +68,23 @@ class RepeatTest
 		m_anim.repeatMode = RepeatMode.REPEAT;
 		m_anim.repeatCount = INFINITE;
 
-		m_anim.update(secs(1.0));
+		m_anim.update(seconds(1));
 		assertEquals(m_val, 90);
 		assertTrue(m_anim.isRunning());
 
-		m_anim.update(secs(1.0));
+		m_anim.update(seconds(1));
 		assertEquals(m_val, 0);
 		assertTrue(m_anim.isRunning());
 
-		m_anim.update(secs(.5));
+		m_anim.update(msecs(500));
 		assertEquals(m_val, 45);
 		assertTrue(m_anim.isRunning());
 
-		m_anim.update(secs(.5));
+		m_anim.update(msecs(500));
 		assertEquals(m_val, 90);
 		assertTrue(m_anim.isRunning());
 
-		m_anim.update(secs(199.0));
+		m_anim.update(seconds(199));
 		assertEquals(m_val, 0);
 		assertTrue(m_anim.isRunning());
 	}
@@ -95,19 +95,19 @@ class RepeatTest
 		m_anim.repeatMode = RepeatMode.REVERSE;
 		m_anim.repeatCount = 1;
 
-		m_anim.update(secs(1.0));
+		m_anim.update(seconds(1));
 		assertEquals(m_val, 90);
 		assertTrue(m_anim.isRunning());
 
-		m_anim.update(secs(1.0));
+		m_anim.update(seconds(1));
 		assertEquals(m_val, 180);
 		assertTrue(m_anim.isRunning());
 
-		m_anim.update(secs(1.0));
+		m_anim.update(seconds(1));
 		assertEquals(m_val, 90);
 		assertTrue(m_anim.isRunning());
 
-		m_anim.update(secs(1.0));
+		m_anim.update(seconds(1));
 		assertEquals(m_val, 0);
 		assertFalse(m_anim.isRunning());
 	}
@@ -118,39 +118,39 @@ class RepeatTest
 		m_anim.repeatMode = RepeatMode.REVERSE;
 		m_anim.repeatCount = INFINITE;
 
-		m_anim.update(secs(2));
+		m_anim.update(seconds(2));
 		assertEquals(m_val, 180);
 		assertTrue(m_anim.isRunning());
 
-		m_anim.update(secs(0.5));
+		m_anim.update(msecs(500));
 		assertEquals(m_val, 135);
 		assertTrue(m_anim.isRunning());
 
-		m_anim.update(secs(0.5));
+		m_anim.update(msecs(500));
 		assertEquals(m_val, 90);
 		assertTrue(m_anim.isRunning());
 
-		m_anim.update(secs(1.0));
+		m_anim.update(seconds(1));
 		assertEquals(m_val, 0);
 		assertTrue(m_anim.isRunning());
 
-		m_anim.update(secs(.5));
+		m_anim.update(msecs(500));
 		assertEquals(m_val, 45);
 		assertTrue(m_anim.isRunning());
 
-		m_anim.update(secs(1.5));
+		m_anim.update(msecs(1500));
 		assertEquals(m_val, 180);
 		assertTrue(m_anim.isRunning());
 
-		m_anim.update(secs(.5));
+		m_anim.update(msecs(500));
 		assertEquals(m_val, 135);
 		assertTrue(m_anim.isRunning());
 
-		m_anim.update(secs(1.5));
+		m_anim.update(msecs(1500));
 		assertEquals(m_val, 0);
 		assertTrue(m_anim.isRunning());
 
-		m_anim.update(secs(200.0));
+		m_anim.update(seconds(200));
 		assertEquals(m_val, 0);
 		assertTrue(m_anim.isRunning());
 	}
@@ -171,7 +171,7 @@ class RepeatTest
 	this()
 	{
 		sprite = new Sprite();
-		duration = secs(2.0);
+		duration = seconds(2.0);
 	}
 
 	@Before
@@ -195,15 +195,15 @@ class RepeatTest
 	{
 		animSet.setMode(AnimationSetMode.PARALLEL);
 
-		animSet.update(secs(.5));
+		animSet.update(msecs(500));
 		assertEquals(sprite.scale, Vector2f(2.5, 2.5));
 		assertEquals(sprite.position, Vector2f(25, 25));
 
-		animSet.update(secs(1));
+		animSet.update(seconds(1));
 		assertEquals(sprite.scale, Vector2f(7.5, 7.5));
 		assertEquals(sprite.position, Vector2f(75, 75));
 
-		animSet.update(secs(.5));
+		animSet.update(msecs(500));
 		assertEquals(sprite.scale, Vector2f(10, 10));
 		assertEquals(sprite.position, Vector2f(100, 100));
 		assertFalse(scaleAnim.isRunning());
@@ -216,24 +216,24 @@ class RepeatTest
 	{
 		animSet.setMode(AnimationSetMode.SEQUENTIAL);
 
-		animSet.update(secs(.5));
+		animSet.update(msecs(500));
 		assertEquals(sprite.scale, Vector2f(2.5, 2.5));
 
-		animSet.update(secs(1));
+		animSet.update(seconds(1));
 		assertEquals(sprite.scale, Vector2f(7.5, 7.5));
 
-		animSet.update(secs(.5));
+		animSet.update(msecs(500));
 		assertEquals(sprite.scale, Vector2f(10, 10));
 		assertFalse(scaleAnim.isRunning());
 
 		//The translation animation should get run now...
-		animSet.update(secs(.5));
+		animSet.update(msecs(500));
 		assertEquals(sprite.position, Vector2f(25, 25));
 
-		animSet.update(secs(1));
+		animSet.update(seconds(1));
 		assertEquals(sprite.position, Vector2f(75, 75));
 
-		animSet.update(secs(.5));
+		animSet.update(msecs(500));
 		assertEquals(sprite.position, Vector2f(100, 100));
 
 		assertFalse(translateAnim.isRunning());
