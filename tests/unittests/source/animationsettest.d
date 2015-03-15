@@ -8,7 +8,7 @@ import dunit;
 import animate.d;
 
 
-class AnimationSetTest
+/*class AnimationSetTest
 {
     mixin UnitTest;
 
@@ -27,7 +27,6 @@ class AnimationSetTest
 
     this()
     {
-        sprite = new Sprite();
         duration = seconds(2);
     }
 
@@ -97,4 +96,4 @@ class AnimationSetTest
         assertFalse(m_anim2.isRunning());
         assertFalse(animSet.isRunning());
     }
-}
+}*/
