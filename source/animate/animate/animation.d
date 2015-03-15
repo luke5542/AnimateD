@@ -1,6 +1,7 @@
 module animate.animate.animation;
 
 import std.stdio;
+import std.traits;
 import core.time;
 
 import animate.animate.interpolator;
