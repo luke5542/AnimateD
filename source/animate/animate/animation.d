@@ -208,7 +208,7 @@ class Animation : Animatable
 }
 
 class ValueAnimation(T) : Animation
-if(isNumeric(T))
+if(isNumeric!T)
 {
     private
     {
@@ -226,7 +226,7 @@ if(isNumeric(T))
 
     override protected void updateProgress(double progress)
     {
-        *m_target = m_startVal + (temp * progress);
+        *m_target = cast(T) (m_startVal + (m_difference * progress));
     }
 
 }

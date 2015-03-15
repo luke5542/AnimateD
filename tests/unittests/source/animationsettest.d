@@ -8,7 +8,7 @@ import dunit;
 import animate.d;
 
 
-/*class AnimationSetTest
+class AnimationSetTest
 {
     mixin UnitTest;
 
@@ -97,4 +97,4 @@ import animate.d;
         assertFalse(m_anim2.isRunning());
         assertFalse(animSet.isRunning());
     }
-}*/
+}
