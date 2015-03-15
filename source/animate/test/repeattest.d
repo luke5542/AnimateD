@@ -7,7 +7,7 @@ import dunit;
 
 import animate.d;
 
-class RepeatTest
+package class RepeatTest
 {
     mixin UnitTest;
 

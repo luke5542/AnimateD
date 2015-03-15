@@ -8,7 +8,7 @@ import dunit;
 import animate.d;
 
 
-class AnimationSetTest
+package class AnimationSetTest
 {
     mixin UnitTest;
 
