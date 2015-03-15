@@ -1,5 +1,5 @@
 language: d
 sudo: false
 
-script: 
-        - cd tests/unittests/ && dub
+script:
+        - dub test
