@@ -220,6 +220,7 @@ if(isNumeric!T)
     this(Duration duration, T* target, T start, T end)
     {
         super(duration);
+        m_target = target;
         m_startVal = start;
         m_difference = end - start;
     }
