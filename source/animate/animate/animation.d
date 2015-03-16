@@ -136,7 +136,7 @@ class Animation : Animatable
 
     void addOnAnimationEndListener(AnimListenerFunc listener)
     {
-        m_listeners ~= m_animEndListeners;
+        m_animEndListeners ~= listener;
     }
 
     private void sendOnAnimationEnd()
@@ -149,7 +149,7 @@ class Animation : Animatable
 
     void addOnAnimationRepeatListener(AnimListenerFunc listener)
     {
-        m_listeners ~= m_animRepeatListeners;
+        m_animRepeatListeners ~= listener;
     }
 
     private void sendOnAnimationRepeat()
