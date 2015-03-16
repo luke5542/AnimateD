@@ -6,7 +6,7 @@ import animate.animate.animation;
 
 interface Animatable
 {
-    void runAnimation(Animatable anim);
+    void runAnimation(Updatable anim);
     void updateAnimations(Duration time);
     void update(Duration time);
 }

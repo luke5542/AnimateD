@@ -20,7 +20,14 @@ enum AnimationSetMode
     SEQUENTIAL
 }
 
-class Animation
+interface Updatable
+{
+    protected void updateProgress(double progress);
+    public void update(Duration deltaTime);
+    public bool isRunning();
+}
+
+class Animation : Updatable
 {
     private
     {
@@ -248,7 +255,7 @@ class DelegateAnimation : Animation
 }
 
 ///For now, all this class does is run a bunch of animations simultaneously.
-class AnimationSet : Animatable
+class AnimationSet : Updatable
 {
     private
     {
