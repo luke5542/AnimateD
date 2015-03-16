@@ -17,11 +17,11 @@ mixin template NormalNode()
 
     private
     {
-        Animatable[] m_animations;
+        Updatable[] m_animations;
     }
 
     /// Add the animation to the queue
-    void runAnimation(Animatable anim)
+    void runAnimation(Updatable anim)
     {
         m_animations ~= anim;
     }
