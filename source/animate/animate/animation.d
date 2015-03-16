@@ -20,14 +20,7 @@ enum AnimationSetMode
     SEQUENTIAL
 }
 
-interface Animatable
-{
-    protected void updateProgress(double progress);
-    public void update(Duration deltaTime);
-    public bool isRunning();
-}
-
-class Animation : Animatable
+class Animation
 {
     private
     {

@@ -1,10 +1,10 @@
-module animate.animate.node;
+module animate.animate.animatable;
 
 import core.time;
 
 import animate.animate.animation;
 
-interface Node
+interface Animatable
 {
     void runAnimation(Animatable anim);
     void updateAnimations(Duration time);
@@ -13,7 +13,7 @@ interface Node
 
 mixin template NormalNode()
 {
-    import animate.animation;
+    import animate.animate.animation;
 
     private
     {
