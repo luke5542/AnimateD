@@ -27,16 +27,12 @@ interface Animatable
     public bool isRunning();
 }
 
-interface UpdateListener
-{
-    void onAnimationEnd();
-    void onAnimationRepeat();
-}
-
 class Animation : Animatable
 {
     private
     {
+        alias AnimListenerFunc = void delegate();
+
         Duration m_duration;
         Duration m_progress;
         bool m_isRunning;
@@ -49,7 +45,8 @@ class Animation : Animatable
 
         bool m_isReverse;
 
-        UpdateListener[] m_listeners;
+        AnimListenerFunc[] m_animEndListeners;
+        AnimListenerFunc[] m_animRepeatListeners;
     }
 
     this(Duration duration)
@@ -62,8 +59,8 @@ class Animation : Animatable
         m_isReverse = false;
     }
 
-    /// This is called with the value (0-1) of the
-    /// amount that this animation has completed by. TODO: word better
+    /// This is called with the value (0.0 -> 1.0) of the
+    /// amount that this animation has completed by.
     protected abstract void updateProgress(double progress);
 
     /// This takes the delta time since the last update call as the input.
@@ -137,24 +134,29 @@ class Animation : Animatable
         }
     }
 
-    void addUpdateListener(UpdateListener listener)
+    void addOnAnimationEndListener(AnimListenerFunc listener)
     {
-        m_listeners ~= listener;
+        m_listeners ~= m_animEndListeners;
     }
 
-    void sendOnAnimationEnd()
+    private void sendOnAnimationEnd()
     {
-        foreach(listener; m_listeners)
+        foreach(listener; m_animEndListeners)
         {
-            listener.onAnimationEnd();
+            listener();
         }
     }
 
-    void sendOnAnimationRepeat()
+    void addOnAnimationRepeatListener(AnimListenerFunc listener)
     {
-        foreach(listener; m_listeners)
+        m_listeners ~= m_animRepeatListeners;
+    }
+
+    private void sendOnAnimationRepeat()
+    {
+        foreach(listener; m_animRepeatListeners)
         {
-            listener.onAnimationRepeat();
+            listener();
         }
     }
 
