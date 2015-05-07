@@ -1,5 +1,5 @@
 /*
-An Animation framework for the D programming language.
+AnimateD - An Animation framework for the D programming language.
 Copyright (C) 2015 Devin Ridgway
 
 This program is free software; you can redistribute it and/or modify
