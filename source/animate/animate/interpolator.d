@@ -4,7 +4,20 @@ import std.math;
 
 interface Interpolator
 {
-    double interpolate(double progress);
+    /+
+     + This takes a value from 0 to 1, and
+     + returns an interpolated value from 0 to 1
+     + based on the type of curve desired.
+     +/
+    double interpolate(double progress)
+    in
+    {
+        assert(progress >= 0 && progress <= 1);
+    }
+    out
+    {
+        assert(progress >= 0 && progress <= 1);
+    }
 }
 
 class LinearInterpolator : Interpolator
