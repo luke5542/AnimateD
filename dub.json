@@ -9,6 +9,6 @@
     "targetPath": "bin\\",
 
     "dependencies": {
-        "d-unit": ">=0.7.1"
+        "d-unit": "~master"
     }
 }

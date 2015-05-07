@@ -209,6 +209,10 @@ class Animation : Updatable
     }
 }
 
+/+
+ + This class animates between two values of type T,
+ + placing the result in the pointer argument.
+ +/
 class ValueAnimation(T) : Animation
 if(isNumeric!T)
 {
@@ -222,6 +226,7 @@ if(isNumeric!T)
     this(Duration duration, T* target, T start, T end)
     {
         super(duration);
+        assert(target);
         m_target = target;
         m_startVal = start;
         m_difference = end - start;
@@ -234,6 +239,10 @@ if(isNumeric!T)
 
 }
 
+/+
+ + This class progresses like a normal Animation, but leaves
+ + the details of utilizing the progress updates up to the caller.
+ +/
 class DelegateAnimation : Animation
 {
     private
@@ -254,7 +263,10 @@ class DelegateAnimation : Animation
 
 }
 
-///For now, all this class does is run a bunch of animations simultaneously.
+/+
+ + This class acts the same as an Animation, but runs an arbitrary
+ + number of Animations either simultaneously or in parallel.
+ +/
 class AnimationSet : Updatable
 {
     private
@@ -279,7 +291,7 @@ class AnimationSet : Updatable
     }
 
     //Does nothing because this doesn't need it...
-    final void updateProgress(double progress) {};
+    final void updateProgress(double progress) {}
 
     final void update(Duration deltaT)
     {
