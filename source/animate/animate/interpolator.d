@@ -32,9 +32,9 @@ interface Interpolator
     {
         assert(progress >= 0 && progress <= 1);
     }
-    out
+    out (result)
     {
-        assert(progress >= 0 && progress <= 1);
+        assert(result >= 0 && result <= 1);
     }
 }
 
