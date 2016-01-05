@@ -228,6 +228,19 @@ class Animation : Updatable
     }
 }
 
+class SimpleAnimation : Animation
+{
+    this(Duration dur)
+    {
+        super(dur);
+    }
+    
+    override protected void updateProgress(double progress)
+    {
+        //Do nothing...
+    }
+}
+
 /+
  + This class animates between two values of type T,
  + placing the result in the pointer argument.
